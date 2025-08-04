@@ -422,10 +422,9 @@ copies or substantial portions of the Software.
 
 **Massimiliano Angelone**
 
-- 🌐 Website: [massimiliano-angelone.dev](https://massimiliano-angelone.dev)
 - 📧 Email: massiangelone01@gmail.com
 - 🐙 GitHub: [@maxange-developer](https://github.com/maxange-developer)
-- 💼 LinkedIn: [Massimiliano Angelone](https://linkedin.com/in/massimiliano-angelone)
+- 💼 LinkedIn: [Massimiliano Angelone](https://linkedin.com/in/massiangelone)
 
 ---
 
