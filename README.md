@@ -4,8 +4,8 @@
 
 _Scopri il potere nutrizionale dei migliori frutti della natura_
 
-[![Angular](https://img.shields.io/badge/Angular-18+-DD0031?style=for-the-badge&logo=angular&logoColor=white)](https://angular.io/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Angular](https://img.shields.io/badge/Angular-20+-DD0031?style=for-the-badge&logo=angular&logoColor=white)](https://angular.io/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.7+-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Firebase](https://img.shields.io/badge/Firebase-Hosting-FFA000?style=for-the-badge&logo=firebase&logoColor=white)](https://firebase.google.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
@@ -17,13 +17,13 @@ _Scopri il potere nutrizionale dei migliori frutti della natura_
 
 ## 🎯 Panoramica
 
-**Fruity Nutrition App** è un'applicazione Angular moderna che trasforma il modo in cui scopri ed esplori le informazioni nutrizionali sui frutti. Costruita con tecnologie web all'avanguardia e alimentata dalle API di FruityVice, offre un'interfaccia elegante e responsive per individui attenti alla salute.
+**Fruity Nutrition App** è un'applicazione Angular moderna che trasforma il modo in cui scopri ed esplori le informazioni nutrizionali sui frutti. Costruita con Angular 20+ e le tecnologie web più all'avanguardia, è alimentata dalle API di FruityVice e offre un'interfaccia elegante e responsive per individui attenti alla salute.
 
 ### ✨ Perché Fruity Nutrition App?
 
 🌱 **Approccio Salute-Centrico** - Promuove la nutrizione plant-based con dati completi sui frutti  
 🎨 **UX Eccezionale** - Design moderno con animazioni fluide e navigazione intuitiva  
-⚡ **Performance Ottimizzate** - Zoneless change detection e strategie di caching avanzate  
+⚡ **Performance Ottimizzate** - Angular 20+ zoneless change detection e strategie di caching avanzate  
 🔍 **Scoperta Intelligente** - Capacità avanzate di ricerca e filtraggio  
 📱 **Accesso Universale** - Design completamente responsive per tutti i dispositivi  
 🚀 **Hosting Veloce** - Deployato su Firebase Hosting con CDN globale
@@ -62,8 +62,8 @@ _Scopri il potere nutrizionale dei migliori frutti della natura_
 
 ### Frontend Framework
 
-![Angular](https://img.shields.io/badge/-Angular%2018+-DD0031?style=flat-square&logo=angular&logoColor=white)
-![TypeScript](https://img.shields.io/badge/-TypeScript%205.0+-007ACC?style=flat-square&logo=typescript&logoColor=white)
+![Angular](https://img.shields.io/badge/-Angular%2020+-DD0031?style=flat-square&logo=angular&logoColor=white)
+![TypeScript](https://img.shields.io/badge/-TypeScript%205.7+-007ACC?style=flat-square&logo=typescript&logoColor=white)
 ![RxJS](https://img.shields.io/badge/-RxJS-B7178C?style=flat-square&logo=reactivex&logoColor=white)
 ![Angular Signals](https://img.shields.io/badge/-Angular%20Signals-DD0031?style=flat-square&logo=angular&logoColor=white)
 
@@ -103,11 +103,11 @@ _Scopri il potere nutrizionale dei migliori frutti della natura_
 
 ### 🏗️ Highlights Architetturali
 
-- **🚫 Zoneless Change Detection** - Performance di nuova generazione Angular 18+
+- **🚫 Zoneless Change Detection** - Performance di nuova generazione Angular 20+
 - **🎯 Standalone Components** - Architettura modulare e tree-shakeable
 - **⚡ Angular Signals** - Gestione stato reattiva moderna
 - **🔄 Smart Caching** - Cache HTTP intelligente con shareReplay
-- **� CORS Handling** - Gestione automatica proxy development/production
+- **🌐 CORS Handling** - Gestione automatica proxy development/production
 - **📊 Testing Completo** - 87.6% coverage con 128 test case
 - **🎨 Modern Design** - UI responsive con Material Icons
 - **🚀 Firebase Hosting** - Deploy automatizzato con CDN globale
@@ -121,9 +121,9 @@ _Scopri il potere nutrizionale dei migliori frutti della natura_
 Prima di iniziare, assicurati di avere installato:
 
 ```bash
-node -v    # Node.js 18.0+ richiesto
-npm -v     # npm 9.0+ richiesto
-ng version # Angular CLI 18.0+ richiesto
+node -v    # Node.js 20.0+ richiesto
+npm -v     # npm 10.0+ richiesto
+ng version # Angular CLI 20.0+ richiesto
 ```
 
 ### ⚡ Installazione
@@ -214,7 +214,8 @@ export const environment = {
 // environment.prod.ts (Production)
 export const environment = {
   production: true,
-  apiUrl: "https://api.allorigins.win/get?url=https%3A//fruityvice.com/api/fruit",
+  apiUrl:
+    "https://api.allorigins.win/get?url=https%3A//fruityvice.com/api/fruit",
 };
 ```
 
@@ -444,7 +445,7 @@ copies or substantial portions of the Software.
 
 **🍎 Scopri il potere nutrizionale della frutta con [Fruity Nutrition](https://fruity-nutrition.web.app)! 🍎**
 
-_Costruito con ❤️ e Angular_
+_Costruito con ❤️ usando Angular 20+_
 
 </div>
 
@@ -456,7 +457,7 @@ _Costruito con ❤️ e Angular_
 
 | Pratica                          | Implementazione                       | Stato |
 | -------------------------------- | ------------------------------------- | ----- |
-| 🚫 **Zoneless Change Detection** | Ottimizzazione performance next-gen   | ✅    |
+| 🚫 **Zoneless Change Detection** | Ottimizzazione performance Angular 20 | ✅    |
 | 🎯 **Standalone Components**     | Architettura modulare, tree-shakeable | ✅    |
 | ⚡ **Angular Signals**           | Stato reattivo senza complessità RxJS | ✅    |
 | 🔄 **OnPush Strategy**           | Change detection ottimizzata          | ✅    |
@@ -529,7 +530,7 @@ netlify deploy --prod --dir=dist
 
 ```dockerfile
 # Dockerfile incluso per deploy containerizzato
-FROM node:18-alpine AS builder
+FROM node:20-alpine AS builder
 WORKDIR /app
 COPY package*.json ./
 RUN npm ci --only=production
@@ -683,10 +684,8 @@ Questo progetto è rilasciato sotto **Licenza MIT** - vedi il file [LICENSE](LIC
 
 ### 💬 Rimani in Contatto
 
-[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:your-email@example.com)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/your-profile)
-[![Twitter](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/your-handle)
-[![Portfolio](https://img.shields.io/badge/Portfolio-FF5722?style=for-the-badge&logo=todoist&logoColor=white)](https://your-portfolio.com)
+[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:your-email@massiangelone01.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/massiangelone)
 
 ### ⭐ Mostra il Tuo Supporto
 
@@ -696,23 +695,5 @@ Se questo progetto ti ha aiutato, considera di:
 - 🍴 **Forkare** per i tuoi progetti
 - 📢 **Condividere** con la tua rete
 - 🐛 **Segnalare** bug o **💡 richiedere** feature
-
-</div>
-
----
-
-<div align="center">
-
-### 🎉 Demo Live
-
-**[🌐 Prova Fruity Nutrition App](https://)**
-
-_Scopri il potere nutrizionale dei migliori frutti della natura_
-
----
-
-_Costruito con ❤️ usando Angular 18+ • Realizzato per sviluppatori attenti alla salute e appassionati di frutta_
-
-![Fruit Animation](https://via.placeholder.com/800x200/4CAF50/white?text=🍎🍌🍓🥝🍊+Promuovendo+Nutrizione+Sana+🥭🍇🍑🍍🥑)
 
 </div>
