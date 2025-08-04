@@ -1,0 +1,191 @@
+/**
+ * FruitCard Component Styles
+ * 
+ * This stylesheet defines the visual design for individual fruit cards,
+ * implementing a modern card-based UI with hover effects, responsive design,
+ * and accessibility features. Uses CSS Grid and Flexbox for optimal layout.
+ */
+
+/* Main card container with responsive sizing and smooth interactions */
+.fruit-card {
+  max-width: 350px;
+  margin: 16px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border-radius: 12px;
+
+  /* PrimeNG Card component styling with enhanced visual effects */
+  ::ng-deep .p-card {
+    box-shadow: 0 4px 12px rgba(0, 200, 81, 0.1);
+    border: 2px solid rgba(0, 200, 81, 0.1);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border-radius: 16px;
+    overflow: hidden;
+
+    /* Interactive hover state with elevation and scaling effect */
+    &:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 12px 32px rgba(0, 200, 81, 0.25);
+      border-color: rgba(0, 200, 81, 0.3);
+    }
+  }
+
+  /* Card header section with flexible layout and gradient background */
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px;
+    background: linear-gradient(
+      135deg,
+      rgba(0, 200, 81, 0.05) 0%,
+      rgba(0, 200, 81, 0.1) 100%
+    );
+    border-bottom: 1px solid rgba(0, 200, 81, 0.1);
+  }
+
+  /* Circular emoji container with gradient background and hover animations */
+  .fruit-emoji {
+    font-size: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    background: linear-gradient(
+      135deg,
+      rgba(0, 200, 81, 0.1) 0%,
+      rgba(0, 200, 81, 0.2) 100%
+    );
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    min-width: 70px;
+    min-height: 70px;
+    box-shadow: 0 4px 12px rgba(0, 200, 81, 0.2);
+
+    /* Playful hover animation with scale and rotation */
+    &:hover {
+      transform: scale(1.1) rotate(5deg);
+    }
+  }
+
+  /* Title section with flexible layout for optimal text display */
+  .card-title-section {
+    flex: 1;
+  }
+
+  /* Main fruit name with hierarchical typography */
+  .card-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #2d3748;
+    margin: 0 0 4px 0;
+  }
+
+  /* Secondary information with subtle styling */
+  .card-subtitle {
+    font-size: 0.95rem;
+    color: #718096;
+    margin: 0;
+    font-style: italic;
+  }
+
+  /* Responsive grid layout for nutritional information preview */
+  .nutrition-preview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  /* Individual nutrition fact item with icon and value display */
+  .nutrition-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+
+    /* Colorful icons for visual categorization */
+    i {
+      color: #667eea;
+      font-size: 1.1rem;
+    }
+
+    /* Bold text for nutritional values */
+    span {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #4a5568;
+    }
+  }
+
+  /* Tag container with flexible wrapping for responsive design */
+  .nutrition-chips {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+
+    /* Enhanced PrimeNG tag styling with modern pill design */
+    ::ng-deep .p-tag {
+      border-radius: 16px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 6px 12px;
+    }
+  }
+
+  /* Card footer with action buttons and consistent spacing */
+  ::ng-deep .p-card-footer {
+    padding: 12px 20px;
+    display: flex;
+    justify-content: flex-end;
+
+    /* Modern button styling with rounded corners */
+    .p-button {
+      border-radius: 20px;
+      font-weight: 600;
+      text-transform: none;
+    }
+  }
+
+  /* Additional hover effect for emoji animation */
+  &:hover .fruit-emoji {
+    transform: scale(1.1);
+  }
+
+  /* Active state feedback for user interaction */
+  &:active {
+    transform: translateY(-2px);
+  }
+}
+
+/* Dark Mode Support: Adaptive styling for dark theme preference */
+@media (prefers-color-scheme: dark) {
+  .fruit-card {
+    /* Dark theme header with adjusted gradient colors */
+    .card-header {
+      background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+    }
+
+    /* High contrast text for dark backgrounds */
+    .card-title {
+      color: #f7fafc;
+    }
+
+    /* Subtle secondary text in dark mode */
+    .card-subtitle {
+      color: #cbd5e0;
+    }
+
+    /* Dark nutrition item styling with appropriate contrast */
+    .nutrition-item {
+      background: #2d3748;
+      border-color: #4a5568;
+      color: #e2e8f0;
+    }
+  }
+}

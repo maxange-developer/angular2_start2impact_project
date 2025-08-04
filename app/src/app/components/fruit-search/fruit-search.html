@@ -1,0 +1,100 @@
+<!-- Main search container with comprehensive fruit search functionality -->
+<div class="search-container">
+  <!-- Header section displaying search title and subtitle with emoji enhancement -->
+  <div class="search-header">
+    <h2>🔍 {{ translationService.t().search.title }}</h2>
+    <p>{{ translationService.t().home.subtitle }}</p>
+  </div>
+
+  <!-- Primary search form with input field and action button -->
+  <div class="search-form">
+    <!-- Enhanced input field with left-positioned search icon and dynamic clear button -->
+    <p-iconField iconPosition="left" class="search-field">
+      <p-inputIcon>
+        <i class="pi pi-search"></i>
+      </p-inputIcon>
+      <!-- Main search input with two-way binding, keyboard event handling, and accessibility features -->
+      <input
+        pInputText
+        [(ngModel)]="searchTerm"
+        (keypress)="onKeyPress($event)"
+        [placeholder]="translationService.t().search.placeholder"
+        [disabled]="isSearching()"
+        autocomplete="off"
+        class="w-full"
+      />
+      <!-- Conditional clear button - only visible when search term exists -->
+      @if (searchTerm()) {
+      <p-button
+        icon="pi pi-times"
+        (onClick)="clearSearch()"
+        [disabled]="isSearching()"
+        [text]="true"
+        severity="secondary"
+        size="small"
+        class="clear-button"
+        aria-label="Clear search"
+      >
+      </p-button>
+      }
+    </p-iconField>
+
+    <!-- Primary search action button with loading state and validation -->
+    <p-button
+      [label]="translationService.t().search.searchButton"
+      icon="pi pi-search"
+      (onClick)="onSearch()"
+      [disabled]="!searchTerm() || isSearching()"
+      [loading]="isSearching()"
+      class="search-button"
+    >
+    </p-button>
+  </div>
+
+  <!-- Search suggestions section with popular fruit quick-access buttons -->
+  <div class="search-suggestions">
+    <p>{{ translationService.t().search.suggestions }}:</p>
+    <!-- Responsive grid of popular fruit suggestions with emoji indicators -->
+    <div class="suggestion-chips">
+      <!-- Apple suggestion button with emoji and quick search action -->
+      <p-button
+        label="🍎 Apple"
+        (onClick)="searchTerm.set('apple'); onSearch()"
+        [disabled]="isSearching()"
+        [outlined]="true"
+        size="small"
+      >
+      </p-button>
+      <!-- Banana suggestion button with emoji and quick search action -->
+      <p-button
+        label="🍌 Banana"
+        (onClick)="searchTerm.set('banana'); onSearch()"
+        [disabled]="isSearching()"
+        [outlined]="true"
+        size="small"
+      >
+      </p-button>
+      <!-- Orange suggestion button with emoji and quick search action -->
+      <p-button
+        label="🍊 Orange"
+        (onClick)="searchTerm.set('orange'); onSearch()"
+        [disabled]="isSearching()"
+        [outlined]="true"
+        size="small"
+      >
+      </p-button>
+      <!-- Strawberry suggestion button with emoji and quick search action -->
+      <p-button
+        label="🍓 Strawberry"
+        (onClick)="searchTerm.set('strawberry'); onSearch()"
+        [disabled]="isSearching()"
+        [outlined]="true"
+        size="small"
+      >
+      </p-button>
+    </div>
+  </div>
+
+  <!-- Toast notification system for user feedback on search operations -->
+  <p-toast></p-toast>
+</div>

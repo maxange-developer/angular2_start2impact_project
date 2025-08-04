@@ -1,0 +1,138 @@
+<!-- Main container for the comprehensive fruit list display with filtering and sorting -->
+<div class="fruit-list-container">
+  <!-- Header Section: Title, controls, and filtering options -->
+  <div class="list-header">
+    <!-- Main title and statistics display -->
+    <div class="header-content">
+      <h1 class="main-title">{{ translationService.t().home.title }}</h1>
+      <!-- Dynamic fruit count display -->
+      <p class="subtitle">
+        {{ getTotalCount() }} {{ translationService.t().home.totalFruits }}
+      </p>
+    </div>
+
+    <!-- Interactive Controls: Filtering and sorting options -->
+    <div class="list-controls">
+      <!-- Filter and sort dropdown controls -->
+      <div class="filters">
+        <!-- Family-based filtering dropdown with dynamic options -->
+        <p-select
+          [options]="familyOptions()"
+          [ngModel]="selectedFamily()"
+          (ngModelChange)="onFamilyChange($event)"
+          placeholder="{{ translationService.t().home.filterBy }} {{
+            translationService.t().home.familyAll
+          }}"
+          optionLabel="label"
+          optionValue="value"
+          class="family-filter"
+        >
+        </p-select>
+
+        <!-- Sorting options dropdown with multiple criteria -->
+        <p-select
+          [options]="sortOptions()"
+          [ngModel]="sortBy()"
+          (ngModelChange)="onSortChange($event)"
+          placeholder="{{ translationService.t().home.sortBy }}"
+          optionLabel="label"
+          optionValue="value"
+          class="sort-filter"
+        >
+        </p-select>
+      </div>
+
+      <!-- Action buttons for data management -->
+      <div class="actions">
+        <!-- Refresh button with loading state management -->
+        <p-button
+          [label]="translationService.t().common.refresh"
+          icon="pi pi-refresh"
+          (onClick)="refreshFruits()"
+          [disabled]="isLoading()"
+          [outlined]="true"
+          class="refresh-button"
+        >
+        </p-button>
+      </div>
+    </div>
+
+    <!-- Results Information: Active filters and result count display -->
+    <div class="results-info">
+      <!-- Active family filter display with remove option -->
+      @if (selectedFamily() !== 'all') {
+      <p-tag
+        [value]="selectedFamily() + ' Family'"
+        severity="info"
+        class="family-tag"
+      >
+        <!-- Removable filter tag with click-to-remove functionality -->
+        <span class="tag-content">
+          <i
+            class="pi pi-times"
+            (click)="onFamilyChange('all')"
+            style="margin-left: 8px; cursor: pointer"
+          ></i>
+        </span>
+      </p-tag>
+      }
+      <!-- Dynamic result count display showing filtered vs total fruits -->
+      <span class="results-count">
+        Showing {{ getFilteredCount() }} of {{ getTotalCount() }} fruits
+      </span>
+    </div>
+  </div>
+
+  <!-- Loading State: Spinner animation during data fetching -->
+  @if (isLoading()) {
+  <div class="loading-container">
+    <p-progressSpinner styleClass="w-4rem h-4rem"></p-progressSpinner>
+    <p>{{ translationService.t().common.loading }}</p>
+  </div>
+  }
+
+  <!-- Error State: User-friendly error display with retry functionality -->
+  @else if (error()) {
+  <div class="error-container">
+    <i class="pi pi-exclamation-triangle error-icon"></i>
+    <h3>{{ translationService.t().common.error }}</h3>
+    <p>{{ error() }}</p>
+    <!-- Retry button for error recovery -->
+    <p-button
+      [label]="translationService.t().common.retry"
+      icon="pi pi-refresh"
+      (onClick)="refreshFruits()"
+    >
+    </p-button>
+  </div>
+  }
+
+  <!-- Main Content: Responsive fruits grid with dynamic filtering -->
+  @else {
+  <div class="fruits-grid">
+    <!-- Dynamic fruit card rendering with tracking for performance optimization -->
+    @for (fruit of sortedAndFilteredFruits(); track fruit.id) {
+    <app-fruit-card [fruit]="fruit" (fruitSelected)="onFruitSelected($event)">
+    </app-fruit-card>
+    }
+    <!-- Empty state display when no fruits match current filters -->
+    @empty {
+    <div class="empty-state">
+      <i class="pi pi-search-minus empty-icon"></i>
+      <h3>{{ translationService.t().home.noResults }}</h3>
+      <p>{{ translationService.t().home.noResults }}</p>
+      <!-- Clear filters button for easy filter reset -->
+      <p-button
+        [label]="translationService.t().home.filterBy"
+        icon="pi pi-filter-slash"
+        (onClick)="onFamilyChange('all')"
+      >
+      </p-button>
+    </div>
+    }
+  </div>
+  }
+
+  <!-- Global toast notification system for user feedback -->
+  <p-toast></p-toast>
+</div>

@@ -1,0 +1,217 @@
+<!-- Main container for detailed fruit nutritional information modal -->
+<div class="fruit-detail-container">
+  <!-- Fixed Header: Title, taxonomy information, and navigation controls -->
+  <div class="card-header">
+    <!-- Primary header content with fruit identification -->
+    <div class="header-main">
+      <!-- Large emoji representation for visual fruit identification -->
+      <div class="fruit-emoji-large">{{ getFruitEmoji() }}</div>
+      <!-- Fruit naming and scientific classification information -->
+      <div class="header-info">
+        <h2 class="fruit-name">{{ fruit.name }}</h2>
+        <!-- Scientific taxonomy tags with hierarchical classification -->
+        <div class="taxonomy-info">
+          <!-- Family classification tag with icon -->
+          <p-tag
+            icon="pi pi-sitemap"
+            [value]="
+              translationService.t().fruitDetail.family + ': ' + fruit.family
+            "
+            severity="info"
+            styleClass="taxonomy-tag"
+          >
+          </p-tag>
+          <!-- Genus classification tag with geographic icon -->
+          <p-tag
+            icon="pi pi-globe"
+            [value]="
+              translationService.t().fruitDetail.genus + ': ' + fruit.genus
+            "
+            severity="secondary"
+            styleClass="taxonomy-tag"
+          >
+          </p-tag>
+          <!-- Order classification tag with category icon -->
+          <p-tag
+            icon="pi pi-tags"
+            [value]="
+              translationService.t().fruitDetail.order + ': ' + fruit.order
+            "
+            severity="success"
+            styleClass="taxonomy-tag"
+          >
+          </p-tag>
+        </div>
+      </div>
+    </div>
+    <!-- Header navigation actions -->
+    <div class="header-actions">
+      <!-- Modal close button with accessibility support -->
+      <p-button
+        icon="pi pi-times"
+        [text]="true"
+        [rounded]="true"
+        severity="secondary"
+        size="large"
+        (click)="onClose()"
+        styleClass="close-button"
+        [ariaLabel]="translationService.t().fruitDetail.close"
+      >
+      </p-button>
+    </div>
+  </div>
+
+  <!-- Scrollable Content: Comprehensive nutritional analysis and health information -->
+  <div class="nutrition-content">
+    <!-- Calories Highlight Section: Primary energy information display -->
+    <div class="calories-section">
+      <h3>{{ translationService.t().fruitDetail.nutritionalInfo }}</h3>
+      <!-- Context subtitle for caloric measurement -->
+      <p class="nutrition-subtitle">
+        {{ translationService.t().fruitDetail.caloriesUnit }}
+      </p>
+
+      <!-- Prominent calorie display with classification system -->
+      <div class="calories-highlight">
+        <!-- Circular calorie display for visual emphasis -->
+        <div class="calories-circle">
+          <span class="calories-number">{{ fruit.nutritions.calories }}</span>
+          <span class="calories-label">{{
+            translationService.t().fruitDetail.calories
+          }}</span>
+        </div>
+        <!-- Dynamic calorie level classification tag -->
+        <p-tag
+          [value]="getCaloriesLevel()"
+          [severity]="getCaloriesColor()"
+          icon="pi pi-bolt"
+          styleClass="calories-tag"
+        >
+        </p-tag>
+      </div>
+    </div>
+
+    <!-- Visual section separator -->
+    <p-divider></p-divider>
+
+    <!-- Macronutrients Section: Detailed breakdown of primary nutritional components -->
+    <div class="macronutrients">
+      <h4>Macronutrients</h4>
+
+      <!-- Protein Content: Essential amino acid source information -->
+      <div class="nutrient-item protein-item">
+        <!-- Protein value display with unit specification -->
+        <div class="nutrient-info">
+          <span class="nutrient-name">{{
+            translationService.t().fruitDetail.protein
+          }}</span>
+          <span class="nutrient-value">
+            {{ fruit.nutritions.protein
+            }}{{ translationService.t().fruitDetail.gramsUnit }}
+          </span>
+        </div>
+        <!-- Visual progress bar representing protein percentage -->
+        <p-progressBar
+          [value]="getProteinPercentage()"
+          [showValue]="false"
+          styleClass="nutrient-progress protein-progress"
+        >
+        </p-progressBar>
+      </div>
+
+      <!-- Carbohydrates Content: Primary energy source breakdown -->
+      <div class="nutrient-item carbs-item">
+        <!-- Carbohydrate value display with contextual information -->
+        <div class="nutrient-info">
+          <span class="nutrient-name">{{
+            translationService.t().fruitDetail.carbohydrates
+          }}</span>
+          <span class="nutrient-value">
+            {{ fruit.nutritions.carbohydrates
+            }}{{ translationService.t().fruitDetail.gramsUnit }}
+          </span>
+        </div>
+        <!-- Visual progress bar for carbohydrate content representation -->
+        <p-progressBar
+          [value]="getCarbsPercentage()"
+          [showValue]="false"
+          styleClass="nutrient-progress carbs-progress"
+        >
+        </p-progressBar>
+      </div>
+
+      <!-- Fat Content: Essential fatty acid information -->
+      <div class="nutrient-item fat-item">
+        <!-- Fat content value with measurement unit -->
+        <div class="nutrient-info">
+          <span class="nutrient-name">{{
+            translationService.t().fruitDetail.fat
+          }}</span>
+          <span class="nutrient-value">
+            {{ fruit.nutritions.fat
+            }}{{ translationService.t().fruitDetail.gramsUnit }}
+          </span>
+        </div>
+        <!-- Progress bar visualization for fat content -->
+        <p-progressBar
+          [value]="getFatPercentage()"
+          [showValue]="false"
+          styleClass="nutrient-progress fat-progress"
+        >
+        </p-progressBar>
+      </div>
+
+      <!-- Sugar Content: Natural sweetness level indicator -->
+      <div class="nutrient-item sugar-item">
+        <!-- Sugar content display with dietary context -->
+        <div class="nutrient-info">
+          <span class="nutrient-name">{{
+            translationService.t().fruitDetail.sugar
+          }}</span>
+          <span class="nutrient-value">
+            {{ fruit.nutritions.sugar
+            }}{{ translationService.t().fruitDetail.gramsUnit }}
+          </span>
+        </div>
+        <!-- Visual representation of sugar content levels -->
+        <p-progressBar
+          [value]="getSugarPercentage()"
+          [showValue]="false"
+          styleClass="nutrient-progress sugar-progress"
+        >
+        </p-progressBar>
+      </div>
+    </div>
+
+    <!-- Section divider for visual content separation -->
+    <p-divider></p-divider>
+
+    <!-- Health Benefits Section: Educational wellness information display -->
+    <div class="health-benefits">
+      <h4>{{ translationService.t().fruitDetail.healthBenefits }}</h4>
+      <!-- Responsive grid of health benefit highlights with iconography -->
+      <div class="benefits-grid">
+        <!-- Energy boost benefit with bolt icon for quick energy -->
+        <div class="benefit-item">
+          <i class="pi pi-bolt benefit-icon"></i>
+          <span>{{ translationService.t().fruitDetail.energyBoost }}</span>
+        </div>
+        <!-- Vitamin richness benefit with shield icon for protection -->
+        <div class="benefit-item">
+          <i class="pi pi-shield benefit-icon"></i>
+          <span>{{ translationService.t().fruitDetail.richVitamins }}</span>
+        </div>
+        <!-- Cardiovascular health benefit with heart icon -->
+        <div class="benefit-item">
+          <i class="pi pi-heart benefit-icon"></i>
+          <span>{{ translationService.t().fruitDetail.heartHealth }}</span>
+        </div>
+        <!-- Hydration benefit with moon icon for natural refreshment -->
+        <div class="benefit-item">
+          <i class="pi pi-moon benefit-icon"></i>
+          <span>{{ translationService.t().fruitDetail.naturalHydration }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

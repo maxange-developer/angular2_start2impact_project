@@ -1,0 +1,287 @@
+/**
+ * Global Application Styles
+ * 
+ * This file contains the global styling configuration for the Fruity Nutrition App.
+ * It uses PrimeNG's automated theming system with custom CSS variables for design consistency.
+ * 
+ * Features:
+ * - PrimeNG v20+ automated theming integration
+ * - Custom CSS variables for brand consistency
+ * - Responsive design utilities
+ * - Animation and transition classes
+ * - Global component style overrides
+ */
+
+/**
+ * PrimeNG Theme Integration
+ * Modern PrimeNG v20+ uses automated theming through @primeuix/themes
+ * All theme configuration is handled in app.config.ts with the theme provider
+ * No manual CSS imports are required as the system auto-generates optimal styles
+ */
+
+/**
+ * Icon System Integration
+ * PrimeIcons provides comprehensive iconography for the application
+ * Icons are used throughout components for visual consistency and recognition
+ */
+@import "primeicons/primeicons.css";
+
+/**
+ * Design System CSS Variables
+ * 
+ * Centralized color palette and design tokens for consistent theming across the application.
+ * These variables enable easy theme customization and future dark mode implementation.
+ * Values are optimized for accessibility with sufficient contrast ratios.
+ */
+:root {
+  /**
+   * Primary Brand Colors
+   * Main application colors derived from the green nature theme
+   */
+  --primary-color: #00c851;
+  --primary-color-text: #ffffff;
+
+  /**
+   * Surface Color Hierarchy
+   * Layered background colors for depth and visual organization
+   * Used for cards, panels, and container backgrounds
+   */
+  --surface-a: #ffffff; /* Primary background */
+  --surface-b: #f8f9fa; /* Secondary background */
+  --surface-c: #e9ecef; /* Tertiary background */
+  --surface-d: #dee2e6; /* Quaternary background */
+  --surface-e: #ffffff; /* Elevated surface */
+  --surface-f: #ffffff; /* Floating surface */
+
+  /**
+   * Typography Color System
+   * Hierarchical text colors for optimal readability and emphasis
+   */
+  --text-color: #495057; /* Primary text color */
+  --text-color-secondary: #6c757d; /* Secondary text color */
+
+  /**
+   * Primary Color Palette Variations
+   * Complete color scale for different UI states and interactions
+   * Follows Material Design color guidelines for consistency
+   */
+  --primary-50: #e8f5e8; /* Lightest tint */
+  --primary-100: #c8e6c8; /* Light tint */
+  --primary-200: #a5d6a5; /* Medium light */
+  --primary-300: #81c784; /* Medium */
+  --primary-400: #66bb6a; /* Medium dark */
+  --primary-500: #00c851; /* Base color */
+  --primary-600: #00a037; /* Dark */
+  --primary-700: #388e3c; /* Darker */
+  --primary-800: #2e7d32; /* Very dark */
+  --primary-900: #1b5e20; /* Darkest shade */
+}
+
+/**
+ * Base Document Styling
+ * Foundation styles for optimal rendering and accessibility across browsers
+ */
+body {
+  /**
+   * Modern Color Scheme Support
+   * Enables proper system theme detection and browser optimizations
+   */
+  color-scheme: light;
+  background-color: var(--surface-a);
+  color: var(--text-color);
+
+  /**
+   * Typography Foundation
+   * Modern font stack prioritizing Inter for clean readability
+   * Falls back to system fonts for optimal performance
+   */
+  font-family: "Inter", "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/**
+ * Universal Layout Foundation
+ * Ensures consistent box model behavior across all elements
+ */
+* {
+  box-sizing: border-box;
+}
+
+/**
+ * Full Viewport Layout System
+ * Establishes full-height layout foundation for modern app design
+ */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/**
+ * PrimeNG Component Enhancement System
+ * 
+ * Global overrides for PrimeNG components to align with the application's design language.
+ * These customizations enhance the default component styling while maintaining
+ * accessibility and usability standards.
+ */
+
+/**
+ * Enhanced Card Component Styling
+ * Modern card design with depth and interactive feedback
+ */
+.p-card {
+  /* Rounded corners for modern appearance */
+  border-radius: 12px !important;
+  /* Subtle shadow for depth perception */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+
+  /**
+   * Interactive Hover State
+   * Provides visual feedback for interactive cards
+   */
+  &:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15) !important;
+  }
+}
+
+/**
+ * Modern Button System Enhancements
+ * Consistent styling across all button variants
+ */
+.p-button {
+  /* Rounded corners for consistency */
+  border-radius: 8px !important;
+  /* Medium font weight for optimal readability */
+  font-weight: 500 !important;
+
+  /**
+   * Enhanced Raised Button Variant
+   * Increased emphasis for primary actions
+   */
+  &.p-button-raised {
+    font-weight: 600 !important;
+  }
+}
+
+/**
+ * Input Field Consistency
+ * Unified border radius for all input components
+ */
+.p-inputtext {
+  border-radius: 8px !important;
+}
+
+/**
+ * Utility Class System
+ * 
+ * Reusable utility classes for common layout patterns and styling needs.
+ * These classes follow the single-responsibility principle and can be combined
+ * for flexible design solutions.
+ */
+
+/**
+ * Text Alignment Utilities
+ * Simple text alignment for content positioning
+ */
+.text-center {
+  text-align: center;
+}
+
+/**
+ * Flexbox Layout Utilities
+ * Common flexbox patterns for centering and alignment
+ */
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/**
+ * Visual Enhancement Utilities
+ * Special effects for enhanced visual appeal
+ */
+.gradient-text {
+  /* Modern gradient text effect */
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/**
+ * Animation Utility System
+ * 
+ * Predefined animation classes for consistent motion design throughout the application.
+ * These utilities provide smooth transitions that enhance user experience without
+ * being distracting or overly prominent.
+ */
+
+/**
+ * Content Loading Animations
+ * Smooth animations for dynamic content appearance
+ */
+
+/* Fade-in animation for content loading */
+.fade-in {
+  animation: fadeIn 0.4s ease-out;
+}
+
+/* Slide-up animation for modal and dynamic content */
+.slide-up {
+  animation: slideInUp 0.4s ease-out;
+}
+
+/**
+ * Keyframe Animation Definitions
+ * 
+ * Core animation definitions that power the utility classes above.
+ * These animations are optimized for performance and accessibility.
+ */
+
+/**
+ * Smooth Fade-in Transition
+ * Gentle opacity transition for content appearance
+ */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/**
+ * Slide-in-up Transition with Opacity
+ * Combined movement and fade for enhanced entrance effects
+ */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/**
+ * Responsive Design System
+ * 
+ * Standardized breakpoint variables for consistent responsive design implementation
+ * across the application. These breakpoints follow modern web standards and
+ * provide optimal viewing experiences across all device categories.
+ */
+
+/**
+ * Breakpoint Definitions
+ * Mobile-first approach with progressive enhancement for larger screens
+ */
+$mobile: 480px; /* Small mobile devices and phones */
+$tablet: 768px; /* Tablets and small laptops */
+$desktop: 1024px; /* Desktop computers and larger tablets */
+$large-desktop: 1400px; /* Large desktop displays and ultra-wide screens */

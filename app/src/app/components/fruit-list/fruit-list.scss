@@ -1,0 +1,335 @@
+/**
+ * FruitList Component Styles
+ * 
+ * This stylesheet implements the main fruit collection display with advanced
+ * filtering, sorting, and responsive grid layouts. Features include gradient
+ * backgrounds, state management styling, and performance-optimized animations.
+ */
+
+/* Main container with centered layout and responsive constraints */
+.fruit-list-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+/* Header section with centered branding and navigation controls */
+.list-header {
+  margin-bottom: 32px;
+
+  /* Centered header content with gradient text effects */
+  .header-content {
+    text-align: center;
+    margin-bottom: 32px;
+
+    /* Base heading styling with gradient color scheme */
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #333;
+      margin: 0 0 8px 0;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Enhanced main title with brand color gradient and text effects */
+    .main-title {
+      font-size: 2.8rem !important;
+      font-weight: 800 !important;
+      margin: 0 0 12px 0 !important;
+      background: linear-gradient(135deg, #00c851 0%, #00a037 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      background-clip: text !important;
+      text-shadow: 0 4px 8px rgba(0, 200, 81, 0.3);
+      letter-spacing: -0.5px;
+    }
+
+    /* Subtitle with muted color for secondary information */
+    .subtitle {
+      font-size: 1.2rem;
+      color: #666;
+      margin: 0;
+    }
+  }
+}
+
+/* Control panel with filtering and sorting options */
+.list-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: 24px;
+
+  /* Responsive stacking for mobile devices */
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  /* Filter dropdown containers with responsive behavior */
+  .filters {
+    display: flex;
+    gap: 16px;
+
+    /* Mobile-friendly vertical stacking */
+    @media (max-width: 600px) {
+      flex-direction: column;
+    }
+
+    /* Minimum width constraints for filter dropdowns */
+    .family-filter,
+    .sort-filter {
+      min-width: 200px;
+
+      /* Remove width constraints on mobile */
+      @media (max-width: 600px) {
+        min-width: auto;
+      }
+    }
+  }
+
+  /* Action button container with consistent spacing */
+  .actions {
+    display: flex;
+    gap: 12px;
+
+    /* Enhanced refresh button with modern styling */
+    .refresh-button {
+      border-radius: 20px;
+      font-weight: 500;
+
+      /* Icon spacing within button */
+      mat-icon {
+        margin-right: 8px;
+      }
+    }
+  }
+}
+
+/* Results information bar with active filters and count display */
+.results-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+
+  /* Mobile-friendly vertical stacking */
+  @media (max-width: 600px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  /* Result count display with muted styling */
+  .results-count {
+    color: #666;
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+
+  /* Custom chip styling for active filters */
+  mat-chip-set {
+    mat-chip {
+      background: rgba(102, 126, 234, 0.1);
+      color: #667eea;
+      border: 1px solid rgba(102, 126, 234, 0.3);
+    }
+  }
+}
+
+/* Loading state display with centered spinner and message */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  text-align: center;
+
+  /* Custom spinner with brand color theming */
+  mat-spinner {
+    margin-bottom: 24px;
+
+    /* Brand color for spinner animation */
+    ::ng-deep circle {
+      stroke: #667eea;
+    }
+  }
+
+  /* Loading message with subtle typography */
+  p {
+    font-size: 1.1rem;
+    color: #666;
+    margin: 0;
+  }
+}
+
+/* Error state display with clear messaging and recovery options */
+.error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  text-align: center;
+
+  /* Large error icon with attention-grabbing color */
+  .error-icon {
+    font-size: 4rem;
+    width: 4rem;
+    height: 4rem;
+    color: #f44336;
+    margin-bottom: 16px;
+  }
+
+  /* Error heading with clear hierarchy */
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 8px 0;
+  }
+
+  /* Error message with constrained width for readability */
+  p {
+    font-size: 1.1rem;
+    color: #666;
+    margin: 0 0 24px 0;
+    max-width: 400px;
+  }
+
+  /* Retry button with icon spacing */
+  button {
+    mat-icon {
+      margin-right: 8px;
+    }
+  }
+}
+
+/* Responsive grid layout for fruit card display */
+.fruits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+
+  /* Tablet responsiveness with smaller minimum width */
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+  }
+
+  /* Mobile optimization with single column layout */
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+/* Empty state display when no fruits match current filters */
+.empty-state {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  text-align: center;
+
+  /* Large empty state icon with muted color */
+  .empty-icon {
+    font-size: 4rem;
+    width: 4rem;
+    height: 4rem;
+    color: #ccc;
+    margin-bottom: 16px;
+  }
+
+  /* Empty state heading with clear messaging */
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 8px 0;
+  }
+
+  /* Descriptive text with width constraints for readability */
+  p {
+    font-size: 1.1rem;
+    color: #666;
+    margin: 0 0 24px 0;
+    max-width: 400px;
+  }
+
+  /* Clear filters button with icon spacing */
+  button {
+    mat-icon {
+      margin-right: 8px;
+    }
+  }
+}
+
+/* Performance-optimized animations for grid items */
+.fruits-grid app-fruit-card {
+  animation: slideInUp 0.4s ease-out;
+}
+
+/* Smooth slide-in animation from bottom */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Staggered animation delays for sequential item appearance */
+.fruits-grid app-fruit-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.fruits-grid app-fruit-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.fruits-grid app-fruit-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.fruits-grid app-fruit-card:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.fruits-grid app-fruit-card:nth-child(5) {
+  animation-delay: 0.5s;
+}
+.fruits-grid app-fruit-card:nth-child(6) {
+  animation-delay: 0.6s;
+}
+
+/* Custom scrollbar styling for webkit-based browsers */
+.fruit-list-container {
+  /* Scrollbar track styling */
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  /* Scrollbar background track */
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+  }
+
+  /* Scrollbar thumb with hover effects */
+  &::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+
+    /* Darker thumb color on hover */
+    &:hover {
+      background: #a8a8a8;
+    }
+  }
+}

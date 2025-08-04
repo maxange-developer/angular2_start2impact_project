@@ -1,0 +1,639 @@
+/**
+ * Main Application Layout Styles
+ * 
+ * This stylesheet defines the core layout structure and visual design for the Fruity Nutrition App.
+ * It implements a modern, responsive design with glassmorphism effects, gradient backgrounds,
+ * and smooth animations to create an engaging user experience.
+ * 
+ * Design System Features:
+ * - Flexible layout with sticky navigation and responsive footer
+ * - Modern gradient backgrounds and glassmorphism effects
+ * - PrimeNG component integration with custom styling
+ * - Responsive design patterns for mobile-first approach
+ * - Accessibility-compliant interactive elements
+ * - Smooth animations and micro-interactions
+ */
+
+/* Main application container with full viewport height layout */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* Modern gradient background for visual appeal */
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+/* Top navigation toolbar with brand colors and glassmorphism effect */
+.app-toolbar {
+  /* Primary brand gradient background */
+  background: linear-gradient(135deg, #00c851 0%, #00a037 100%);
+  color: white;
+  /* Elevated shadow with brand color tinting */
+  box-shadow: 0 4px 12px rgba(0, 200, 81, 0.3);
+  /* Sticky positioning for persistent navigation */
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  /* PrimeNG Toolbar component style override */
+  ::ng-deep {
+    .p-toolbar {
+      background: transparent;
+      border: none;
+      padding: 0;
+    }
+  }
+
+  /* Flexbox layout for toolbar content with responsive constraints */
+  .toolbar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px;
+    gap: 24px;
+    height: 70px;
+  }
+
+  /* Application branding section with logo and title */
+  .app-branding {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+
+    /* Brand icon styling with prominent sizing */
+    .app-icon {
+      font-size: 2rem;
+      color: white;
+    }
+
+    /* Application title with enhanced typography */
+    .app-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: white;
+      /* Text shadow for depth and readability */
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  /* Navigation search bar with glassmorphism design */
+  .navbar-search {
+    flex: 1;
+    max-width: 500px;
+    margin: 0 32px;
+
+    .search-field {
+      width: 100%;
+
+      /* PrimeNG InputText component customization */
+      ::ng-deep {
+        .p-inputtext {
+          width: 100%;
+          /* Glassmorphism background effect */
+          background: rgba(255, 255, 255, 0.95);
+          border: 2px solid rgba(255, 255, 255, 0.3);
+          border-radius: 25px;
+          padding: 12px 16px 12px 45px;
+          font-size: 1rem;
+          color: #333;
+          /* Enhanced glassmorphism with backdrop blur */
+          backdrop-filter: blur(10px);
+          transition: all 0.3s ease;
+
+          /* Focus state with enhanced visual feedback */
+          &:focus {
+            border-color: white;
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+            background: white;
+          }
+
+          /* Placeholder text styling */
+          &::placeholder {
+            color: #666;
+          }
+        }
+
+        /* Icon field positioning for search icon */
+        .p-icon-field-left .p-inputtext {
+          padding-left: 45px;
+        }
+
+        /* Search icon styling with brand accent color */
+        .p-icon {
+          left: 15px;
+          color: #667eea;
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+
+  /* Toolbar action buttons container */
+  .toolbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+}
+
+/* Main content area with flexible layout and responsive container */
+.main-content {
+  flex: 1;
+  padding: 24px 16px;
+
+  /* Centered content container with maximum width constraint */
+  .content-container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+}
+
+/* Application footer with dark theme and responsive layout */
+.app-footer {
+  background: #333;
+  color: white;
+  padding: 32px 24px;
+  margin-top: 48px;
+
+  /* Footer content with responsive flexbox layout */
+  .footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    /* Mobile-first responsive design for footer layout */
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 16px;
+      text-align: center;
+    }
+
+    /* Footer text styling */
+    p {
+      margin: 0;
+      color: #ccc;
+    }
+  }
+
+  /* Footer navigation links with icon support */
+  .footer-links {
+    display: flex;
+    gap: 24px;
+
+    /* Reduced gap on mobile for better spacing */
+    @media (max-width: 768px) {
+      gap: 16px;
+    }
+
+    /* Individual link styling with hover effects */
+    a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #ccc;
+      text-decoration: none;
+      transition: color 0.2s ease;
+
+      /* Enhanced link color on hover */
+      &:hover {
+        color: white;
+      }
+
+      /* Consistent icon sizing for visual harmony */
+      i {
+        font-size: 18px;
+        width: 18px;
+        height: 18px;
+      }
+    }
+  }
+}
+
+/**
+ * Global Animation System
+ * Smooth micro-interactions and page transitions for enhanced user experience
+ */
+
+/* Fade-in animation for smooth content appearance */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Slide-up animation with fade for dynamic content loading */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Application container entrance animation */
+.app-container {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/**
+ * Enhanced Browser Experience
+ * Modern scrolling behavior and custom scrollbar styling
+ */
+
+/* Smooth scrolling for better navigation experience */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar design for webkit-based browsers */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Scrollbar track styling with subtle background */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+/* Scrollbar thumb with hover effects */
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+
+  /* Darker color on hover for better interaction feedback */
+  &:hover {
+    background: #a8a8a8;
+  }
+}
+
+/**
+ * Responsive Design System
+ * Mobile-first approach with progressive enhancement for larger screens
+ */
+
+/* Mobile layout adjustments for optimal user experience */
+@media (max-width: 768px) {
+  .app-toolbar .toolbar-content {
+    /* Vertical stacking for mobile navigation */
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px 16px;
+
+    /* Brand positioning on mobile */
+    .app-branding {
+      align-self: flex-start;
+    }
+
+    /* Mobile search bar optimization */
+    .navbar-search {
+      order: 2;
+      width: 100%;
+      max-width: 280px;
+
+      .custom-search-container {
+        flex-grow: 1;
+      }
+    }
+
+    /* Mobile action buttons positioning */
+    .toolbar-actions {
+      align-self: flex-end;
+      order: 1;
+      position: absolute;
+      top: 12px;
+      right: 16px;
+    }
+  }
+
+  /* Reduced content padding for mobile screens */
+  .main-content {
+    padding: 16px 12px;
+  }
+}
+
+/**
+ * PrimeNG Component Customizations
+ * Enhanced styling for modal dialogs and component library integration
+ */
+
+/* Fruit Detail Dialog with modern design enhancements */
+::ng-deep .fruit-detail-dialog {
+  .p-dialog {
+    /* Modern rounded design with enhanced shadows */
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 200, 81, 0.4);
+    border: 2px solid rgba(0, 200, 81, 0.2);
+  }
+
+  .p-dialog-content {
+    padding: 0;
+    background: white;
+    /* Consistent border radius for content area */
+    border-radius: 20px;
+
+    /* Enhanced tag styling with brand color integration */
+    .p-tag:not(.calories-tag) {
+      background: rgba(0, 200, 81, 0.15) !important;
+      color: #00c851 !important;
+      border: 2px solid rgba(0, 200, 81, 0.3) !important;
+
+      /* Consistent icon and value coloring */
+      .p-tag-icon {
+        color: #00c851 !important;
+      }
+
+      .p-tag-value {
+        color: #00c851 !important;
+      }
+    }
+  }
+
+  /* Enhanced backdrop with glassmorphism effect */
+  .p-dialog-mask {
+    backdrop-filter: blur(12px);
+    background: rgba(0, 200, 81, 0.15);
+
+    /* Visual feedback for clickable backdrop */
+    &.p-dialog-mask-scrollblocker {
+      cursor: pointer;
+    }
+  }
+}
+
+/**
+ * Language Selector Component Styling
+ * Modern glassmorphism design with smooth interactions
+ */
+
+/* Language selector button with glassmorphism effect */
+::ng-deep .language-selector {
+  /* Button label with enhanced typography and icon spacing */
+  .p-button-label {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    color: white !important;
+    transition: all 0.3s ease !important;
+  }
+
+  /* Modern button styling with glassmorphism and hover effects */
+  .p-button {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 12px !important;
+    padding: 8px 16px !important;
+    transition: all 0.3s ease !important;
+    /* Enhanced glassmorphism with backdrop blur */
+    backdrop-filter: blur(10px) !important;
+    color: white !important;
+
+    /* Interactive hover state with elevation effect */
+    &:hover {
+      background: rgba(255, 255, 255, 0.25) !important;
+      border-color: rgba(255, 255, 255, 0.5) !important;
+      transform: translateY(-2px) !important;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2) !important;
+    }
+
+    /* Enhanced focus state for accessibility */
+    &:focus {
+      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3) !important;
+    }
+
+    /* Consistent icon coloring */
+    i {
+      color: white !important;
+    }
+  }
+}
+
+/**
+ * Language Menu Dropdown System
+ * Multi-layered styling for dropdown menu functionality with enhanced animations
+ */
+
+/* Simplified language menu container without positioning conflicts */
+::ng-deep .language-menu {
+  border-radius: 8px !important;
+  box-shadow: 0 4px 16px rgba(0, 200, 81, 0.2) !important;
+  border: 1px solid rgba(0, 200, 81, 0.1) !important;
+  background: white !important;
+  min-width: 180px !important;
+
+  /* Individual menu item styling with hover interactions */
+  .language-menu-item {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 12px 16px !important;
+    cursor: pointer !important;
+    transition: background-color 0.2s ease !important;
+
+    /* Subtle hover effect for better user feedback */
+    &:hover {
+      background-color: rgba(0, 200, 81, 0.05) !important;
+    }
+
+    /* Language content layout with icon and text */
+    .language-content {
+      display: flex !important;
+      align-items: center !important;
+      gap: 10px !important;
+
+      /* Flag icon styling with consistent dimensions */
+      .flag-icon {
+        width: 24px !important;
+        height: 18px !important;
+        border-radius: 2px !important;
+        object-fit: cover !important;
+      }
+
+      /* Language label typography */
+      .language-label {
+        color: #333 !important;
+        font-size: 14px !important;
+        font-weight: 500 !important;
+      }
+    }
+
+    /* Active language indicator */
+    .pi-check {
+      color: #00c851 !important;
+      font-size: 14px !important;
+    }
+  }
+}
+
+/**
+ * Enhanced PrimeNG Menu Component Styling
+ * Comprehensive menu system with advanced animations and interactive states
+ */
+
+/* Advanced menu container with entrance animation */
+::ng-deep .p-menu {
+  border-radius: 12px !important;
+  box-shadow: 0 8px 32px rgba(0, 200, 81, 0.25) !important;
+  border: 2px solid rgba(0, 200, 81, 0.1) !important;
+  min-width: 200px !important;
+  background: white !important;
+  overflow: hidden !important;
+  /* Custom entrance animation for smooth appearance */
+  animation: menuSlideIn 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+  transform-origin: top !important;
+
+  /* Menu entrance animation keyframes */
+  @keyframes menuSlideIn {
+    from {
+      opacity: 0;
+      transform: scaleY(0.8) translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: scaleY(1) translateY(0);
+    }
+  }
+
+  /* PrimeNG menuitem structure reset and customization */
+  .p-menuitem {
+    margin: 0 !important;
+    border: none !important;
+
+    /* Menu item content wrapper cleanup */
+    .p-menuitem-content {
+      padding: 0 !important;
+      margin: 0 !important;
+      border: none !important;
+      background: transparent !important;
+
+      /* Menu item link styling reset */
+      .p-menuitem-link {
+        padding: 0 !important;
+        height: auto !important;
+        text-decoration: none !important;
+        display: block !important;
+        width: 100% !important;
+        background: transparent !important;
+        border: none !important;
+        color: inherit !important;
+
+        /* Remove default hover and focus states */
+        &:hover,
+        &:focus {
+          background: transparent !important;
+          border: none !important;
+        }
+      }
+    }
+
+    /* Custom language menu item with enhanced interactions */
+    .language-menu-item {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      padding: 16px 24px !important;
+      cursor: pointer !important;
+      transition: all 0.3s ease !important;
+      min-height: 56px !important;
+      width: 100% !important;
+      background: white !important;
+      border: none !important;
+      margin: 0 !important;
+
+      /* Enhanced hover state with multiple visual feedback elements */
+      &:hover {
+        background: rgba(0, 200, 81, 0.1) !important;
+
+        /* Typography enhancement on hover */
+        .language-label {
+          color: #00c851 !important;
+          font-weight: 600 !important;
+        }
+
+        /* Icon scale effect on hover */
+        .flag-icon {
+          transform: scale(1.05) !important;
+        }
+      }
+
+      /* Language content section with icon and text */
+      .language-content {
+        display: flex !important;
+        align-items: center !important;
+        gap: 16px !important;
+        flex: 1 !important;
+
+        /* Flag icon with enhanced styling and transitions */
+        .flag-icon {
+          width: 28px !important;
+          height: 20px !important;
+          border-radius: 4px !important;
+          box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2) !important;
+          flex-shrink: 0 !important;
+          transition: transform 0.2s ease !important;
+          object-fit: cover !important;
+        }
+
+        /* Language label with enhanced typography */
+        .language-label {
+          color: #2c3e50 !important;
+          font-size: 16px !important;
+          font-weight: 500 !important;
+          transition: all 0.3s ease !important;
+          white-space: nowrap !important;
+          letter-spacing: 0.3px !important;
+        }
+      }
+
+      /* Active language indicator with enhanced styling */
+      .pi-check {
+        color: #00c851 !important;
+        font-size: 18px !important;
+        font-weight: bold !important;
+        flex-shrink: 0 !important;
+        margin-left: 16px !important;
+        transition: all 0.2s ease !important;
+      }
+    }
+
+    /* Enhanced hover effects for check icon */
+    &:hover .language-menu-item .pi-check {
+      transform: scale(1.1) !important;
+      color: #00a037 !important;
+    }
+
+    /* Border styling between menu items */
+    &:not(:last-child) .language-menu-item {
+      border-bottom: 1px solid rgba(0, 200, 81, 0.1) !important;
+    }
+
+    /* Rounded corners for first and last menu items */
+    &:first-child .language-menu-item {
+      border-top-left-radius: 10px !important;
+      border-top-right-radius: 10px !important;
+    }
+
+    &:last-child .language-menu-item {
+      border-bottom-left-radius: 10px !important;
+      border-bottom-right-radius: 10px !important;
+    }
+  }
+
+  /* Hide menu separators for clean appearance */
+  .p-menuitem-separator {
+    display: none !important;
+  }
+}

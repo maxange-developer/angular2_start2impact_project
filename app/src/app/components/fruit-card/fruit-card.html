@@ -1,0 +1,70 @@
+<!-- Interactive fruit card component with comprehensive nutritional preview -->
+<p-card
+  class="fruit-card"
+  (click)="onCardClick()"
+  [attr.aria-label]="'View details for ' + fruit.name"
+>
+  <!-- Card Header: Visual identification and basic fruit information -->
+  <ng-template pTemplate="header">
+    <div class="card-header">
+      <!-- Large emoji for immediate fruit recognition -->
+      <div class="fruit-emoji">{{ getFruitEmoji() }}</div>
+      <!-- Primary fruit identification information -->
+      <div class="card-title-section">
+        <h3 class="card-title">{{ fruit.name }}</h3>
+        <!-- Scientific family classification -->
+        <p class="card-subtitle">{{ fruit.family }}</p>
+      </div>
+    </div>
+  </ng-template>
+
+  <!-- Nutritional Preview: Quick access to key nutritional metrics -->
+  <div class="nutrition-preview">
+    <!-- Caloric content with energy icon -->
+    <div class="nutrition-item">
+      <i class="pi pi-bolt"></i>
+      <span>{{ fruit.nutritions.calories }} cal</span>
+    </div>
+    <!-- Protein content with health icon -->
+    <div class="nutrition-item">
+      <i class="pi pi-heart"></i>
+      <span>{{ fruit.nutritions.protein }}g protein</span>
+    </div>
+    <!-- Carbohydrate content with sparkles icon -->
+    <div class="nutrition-item">
+      <i class="pi pi-sparkles"></i>
+      <span>{{ fruit.nutritions.carbohydrates }}g carbs</span>
+    </div>
+  </div>
+
+  <!-- Nutritional Tags: Color-coded summary of key nutritional information -->
+  <div class="nutrition-chips">
+    <!-- Calorie classification tag with dynamic severity based on caloric content -->
+    <p-tag
+      [value]="fruit.nutritions.calories + ' cal'"
+      [severity]="getCaloriesSeverity()"
+      class="nutrition-tag"
+    >
+    </p-tag>
+    <!-- Sugar content tag for dietary awareness -->
+    <p-tag
+      [value]="fruit.nutritions.sugar + 'g sugar'"
+      severity="info"
+      class="nutrition-tag"
+    >
+    </p-tag>
+  </div>
+
+  <!-- Card Footer: Action buttons for detailed exploration -->
+  <ng-template pTemplate="footer">
+    <!-- Primary action button with event propagation control -->
+    <p-button
+      [label]="translationService.t().common.viewDetails"
+      icon="pi pi-eye"
+      (onClick)="onCardClick(); $event.stopPropagation()"
+      size="small"
+      [text]="true"
+    >
+    </p-button>
+  </ng-template>
+</p-card>
